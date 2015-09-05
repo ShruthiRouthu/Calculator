@@ -9,9 +9,20 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Result</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <h1>Area of Rectangle is :   
+            <% 
+                String area = "unknown";
+                
+                Object obj = request.getAttribute("area");
+                if(obj != null)
+                    area = obj+ "";
+                     
+                out.println(area);
+                 
+            %> 
+        </h1>
     </body>
 </html>
