@@ -12,6 +12,15 @@
         <title>LAB 1</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        
+        <form id="form1" name="form1" method="POST" action=""> 
+            
+            <input id="length" name="length" type="number" value="" placeholder="Enter length of Rectangle">
+            
+            <input id="button" name="button" type="submit" value="submit">
+            
+        
+        
+        </form>
     </body>
 </html>
