@@ -21,6 +21,8 @@ import model.AreaCalculatorService;
  */
 @WebServlet(name = "LabTwoController", urlPatterns = {"/LabTwoController"})
 public class LabTwoController extends HttpServlet {
+    
+    public static final String URL = "lab2.jsp";
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -50,7 +52,7 @@ public class LabTwoController extends HttpServlet {
         
         request.setAttribute("area",area);
         
-        RequestDispatcher view = request.getRequestDispatcher("lab2.jsp");
+        RequestDispatcher view = request.getRequestDispatcher(URL);
         view.forward(request, response);
     }
 

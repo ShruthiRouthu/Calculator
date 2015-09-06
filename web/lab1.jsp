@@ -15,7 +15,7 @@
     <body> 
         
         
-        <form id="rectangleForm" name="rectangleForm" method="POST" action="MainController"> 
+        <form id="rectangleForm" name="rectangleForm" method="POST" action="LabOneController"> 
             <fieldset>
                 <legend> RECTANGLE </legend>
                 <br><br><br>

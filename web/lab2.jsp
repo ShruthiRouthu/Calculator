@@ -13,7 +13,7 @@
     </head>
     <body>
           
-        <form id="rectangleLab2" name="rectangleForm" method="POST" action="LabTwoController"> 
+        <form id="rectangleForm" name="rectangleForm" method="POST" action="LabTwoController"> 
             <fieldset>
                 <legend> RECTANGLE </legend>
                 <br><br><br>

@@ -5,13 +5,16 @@
  */
 package controller;
 
+import static controller.LabTwoController.URL;
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.AreaCalculatorService;
 
 /**
  *
@@ -20,6 +23,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "LabThreeController", urlPatterns = {"/LabThreeController"})
 public class LabThreeController extends HttpServlet {
 
+     public static final String URL = "lab3.jsp";
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -32,18 +36,48 @@ public class LabThreeController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet LabThreeController</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet LabThreeController at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+        
+        String temp;
+        String formType = request.getParameter("type");
+        
+        if(formType != null)
+        {
+           if(formType.equals("RECTANGLE"))  
+           {
+               double length=0,width=0,area=0; 
+        
+                temp = request.getParameter("length");
+                if(temp != null)
+                    length = Double.parseDouble(temp);
+
+                temp = request.getParameter("width");
+                if(temp != null)
+                    width = Double.parseDouble(temp);
+
+                area = AreaCalculatorService.getAreaOfRectangle(length, width);
+
+                request.setAttribute("rectangleArea",area); 
+           
+           }
+           
+           if(formType.equals("CIRCLE"))  
+           {
+               double radious=0,area=0; 
+        
+                temp = request.getParameter("radious");
+                if(temp != null)
+                    radious = Double.parseDouble(temp);
+
+                area = AreaCalculatorService.getAreaOfCircle(radious);
+
+                request.setAttribute("circleArea",area); 
+           }
         }
+         
+        
+        RequestDispatcher view = request.getRequestDispatcher(URL);
+        view.forward(request, response);
+     
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
