@@ -19,4 +19,10 @@ public class AreaCalculatorService {
         return Math.PI*radious*radious;
     }
     
+    public static final double getAreaOfTriangle(double side1,double side2,double side3){
+        double p = (side1+side2+side3)/2.0;
+        double areaSquare = p*(p-side1)*(p-side2)*(p-side3);
+        return Math.sqrt(areaSquare);
+    }
+    
 }

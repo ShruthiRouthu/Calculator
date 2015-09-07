@@ -15,7 +15,7 @@
          <form id="rectangleForm" name="rectangleForm" method="POST" action="LabThreeController"> 
             <fieldset>
                 <legend> RECTANGLE </legend>
-                <br><br><br>
+                <br><br>
                 
                 <label for="length">Length: </label>
                 <input id="length" name="length" type="number" value="" placeholder="Enter length" min=0 required>
@@ -28,29 +28,30 @@
                 <input type="hidden" name="type" id="type" value="RECTANGLE" >
                 
                 <input id="button" name="button" type="submit" value="Get Area">
-                <br><br><br>
-                
+                                
+                <p>
+                 <% 
+                    String rectangleArea = " ";
+
+                    Object obj = request.getAttribute("rectangleArea");
+                    if(obj != null){
+                        rectangleArea = obj+ "";
+                        out.println("<br>Area of Rectangle : " + rectangleArea);
+                    } 
+                %>        
+                </p>
+                <br>
                 
             </fieldset>    
-        
-        </form>
-        
-        <h3>
-             <% 
-                String rectangleArea = " ";
                 
-                Object obj = request.getAttribute("rectangleArea");
-                if(obj != null){
-                    rectangleArea = obj+ "";
-                    out.println("Area of Rectangle : " + rectangleArea);
-                } 
-            %>        
-        </h3>
+        </form>
+        <br><br>
+       
         
-          <form id="circleForm" name="circleForm" method="POST" action="LabThreeController"> 
+        <form id="circleForm" name="circleForm" method="POST" action="LabThreeController"> 
             <fieldset>
                 <legend> CIRCLE </legend>
-                <br><br><br>
+                <br><br>
                 
                 <label for="radious">Radious: </label>
                 <input id="radious" name="radious" type="number" value="" placeholder="Enter radious" min=0 required>
@@ -59,22 +60,59 @@
                 <input type="hidden" name="type" id="type" value="CIRCLE" >
                 
                 <input id="button" name="button" type="submit" value="Get Area">
-                <br><br><br>
+                
+                
+                <p>
+                <% 
+                    obj = request.getAttribute("circleArea");
+                    if(obj != null){
+                        String circleArea = obj+ "";
+                        out.println("<br>Area of Circle : " + circleArea);
+                    }  
+                %>        
+                </p>
+                
+                <br>
                 
             </fieldset>    
         
         </form>
         
-        <h3>
-             <% 
-                String circleArea = " ";
+        <form id="triangleForm" name="rectangleForm" method="POST" action="LabThreeController"> 
+            <fieldset>
+                <legend> TRIANGLE </legend>
+                <br><br>
                 
-                obj = request.getAttribute("circleArea");
-                if(obj != null){
-                    circleArea = obj+ "";
-                    out.println("Area of Circle : " + circleArea);
-                }  
-            %>        
-        </h3>
+                <label for="side1">Side 1: </label>
+                <input id="side1" name="side1" type="number" value="" placeholder="Enter side1" min=0 required>
+                <br><br><br>
+                
+                <label for="side2">Side 2: </label>
+                <input id="side2" name="side2" type="number" value="" placeholder="Enter side2" min=0 required>
+                <br><br><br>
+                
+                <label for="side3">Side 2: </label>
+                <input id="side3" name="side3" type="number" value="" placeholder="Enter side3" min=0 required>
+                <br><br><br>
+                
+                <input type="hidden" name="type" id="type" value="TRIANGLE" >
+                
+                <input id="button" name="button" type="submit" value="Get Area">
+                                
+                <p>
+                 <%                    
+                    obj = request.getAttribute("triangleArea");
+                    if(obj != null){
+                        String triangleArea = obj+ "";
+                        out.println("<br>Area of Triangle : " + triangleArea);
+                    } 
+                %>        
+                </p>
+                <br>
+                
+            </fieldset>    
+                
+        </form>        
+        
     </body>
 </html>

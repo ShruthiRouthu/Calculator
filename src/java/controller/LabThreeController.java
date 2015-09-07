@@ -24,6 +24,10 @@ import model.AreaCalculatorService;
 public class LabThreeController extends HttpServlet {
 
      public static final String URL = "lab3.jsp";
+     public static final String RECTANGLE = "RECTANGLE";
+     public static final String CIRCLE = "CIRCLE";
+     public static final String TRIANGLE = "TRIANGLE";
+     
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -42,7 +46,7 @@ public class LabThreeController extends HttpServlet {
         
         if(formType != null)
         {
-           if(formType.equals("RECTANGLE"))  
+           if(formType.equals(RECTANGLE))  
            {
                double length=0,width=0,area=0; 
         
@@ -60,7 +64,7 @@ public class LabThreeController extends HttpServlet {
            
            }
            
-           if(formType.equals("CIRCLE"))  
+           if(formType.equals(CIRCLE))  
            {
                double radious=0,area=0; 
         
@@ -71,6 +75,27 @@ public class LabThreeController extends HttpServlet {
                 area = AreaCalculatorService.getAreaOfCircle(radious);
 
                 request.setAttribute("circleArea",area); 
+           }
+           
+           if(formType.equals(TRIANGLE))  
+           {
+               double side1=0,side2=0,side3=0,area=0; 
+        
+                temp = request.getParameter("side1");
+                if(temp != null)
+                    side1 = Double.parseDouble(temp);
+                
+                temp = request.getParameter("side2");
+                if(temp != null)
+                    side2 = Double.parseDouble(temp);
+                
+                temp = request.getParameter("side3");
+                if(temp != null)
+                    side3 = Double.parseDouble(temp);
+
+                area = AreaCalculatorService.getAreaOfTriangle(side1,side2,side3);
+
+                request.setAttribute("triangleArea",area); 
            }
         }
          
