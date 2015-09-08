@@ -39,7 +39,7 @@
                 Object obj = request.getAttribute("area");
                 if(obj != null)
                 {
-                    area = obj+ "";
+                    area = obj.toString();
                     out.println("Area of Rectangle : " + area);
                 }
             %>        

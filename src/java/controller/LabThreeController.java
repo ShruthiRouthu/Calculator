@@ -27,6 +27,15 @@ public class LabThreeController extends HttpServlet {
      public static final String RECTANGLE = "RECTANGLE";
      public static final String CIRCLE = "CIRCLE";
      public static final String TRIANGLE = "TRIANGLE";
+     public static final String LENGTH = "length";
+     public static final String WIDTH = "width";
+     public static final String RADIOUS = "radious";
+     public static final String SIDE1 = "side1";
+     public static final String SIDE2 = "side2";
+     public static final String SIDE3 = "side3";  
+     public static final String RECTANGLE_AREA = "rectangleArea";
+     public static final String CIRCLE_AREA = "circleArea";
+     public static final String TRIANGLE_AREA = "triangleArea";
      
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -41,7 +50,7 @@ public class LabThreeController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
-        String temp;
+        double area=0;
         String formType = request.getParameter("type");
         
         // if logic to check for type of form
@@ -49,52 +58,37 @@ public class LabThreeController extends HttpServlet {
         {
            if(formType.equals(RECTANGLE))  
            {
-               double length=0,width=0,area=0; 
+               String length,width; 
         
-                temp = request.getParameter("length");
-                if(temp != null)
-                    length = Double.parseDouble(temp);
+               length = request.getParameter(LENGTH); 
+               width = request.getParameter(WIDTH);
+                
+               if(length != null && width != null)
+                    area = AreaCalculatorService.getAreaOfRectangle(length, width);
 
-                temp = request.getParameter("width");
-                if(temp != null)
-                    width = Double.parseDouble(temp);
-
-                area = AreaCalculatorService.getAreaOfRectangle(length, width);
-
-                request.setAttribute("rectangleArea",area); 
-           
-           }
-           
-           if(formType.equals(CIRCLE))  
-           {
-               double radious=0,area=0; 
+               request.setAttribute(RECTANGLE_AREA,area); 
+            }
+            else if(formType.equals(CIRCLE))  
+            {
+                String radious; 
         
-                temp = request.getParameter("radious");
-                if(temp != null)
-                    radious = Double.parseDouble(temp);
-
-                area = AreaCalculatorService.getAreaOfCircle(radious);
+                radious = request.getParameter(RADIOUS);
+                if(radious != null)
+                    area = AreaCalculatorService.getAreaOfCircle(radious);
 
                 request.setAttribute("circleArea",area); 
-           }
+            }
            
-           if(formType.equals(TRIANGLE))  
+           else if(formType.equals(TRIANGLE))  
            {
-               double side1=0,side2=0,side3=0,area=0; 
+               String side1,side2,side3; 
         
-                temp = request.getParameter("side1");
-                if(temp != null)
-                    side1 = Double.parseDouble(temp);
-                
-                temp = request.getParameter("side2");
-                if(temp != null)
-                    side2 = Double.parseDouble(temp);
-                
-                temp = request.getParameter("side3");
-                if(temp != null)
-                    side3 = Double.parseDouble(temp);
-
-                area = AreaCalculatorService.getAreaOfTriangle(side1,side2,side3);
+                side1 = request.getParameter(SIDE1);             
+                side2= request.getParameter(SIDE2);                
+                side3 = request.getParameter(SIDE3);
+                 
+                if((side1 != null) && (side2 != null) && (side3 != null))
+                    area = AreaCalculatorService.getAreaOfTriangle(side1,side2,side3);
 
                 request.setAttribute("triangleArea",area); 
            }

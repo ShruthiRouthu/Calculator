@@ -38,17 +38,16 @@ public class LabTwoController extends HttpServlet {
                
         response.setContentType("text/html;charset=UTF-8");
         
-        double length=0,width=0,area=0; 
+        String length,width;
+        double area=0; 
         
-        String temp = request.getParameter("length");
-        if(temp != null)
-            length = Double.parseDouble(temp);
+        length = request.getParameter("length");
         
-        temp = request.getParameter("width");
-        if(temp != null)
-            width = Double.parseDouble(temp);
         
-        area = AreaCalculatorService.getAreaOfRectangle(length, width);
+        width = request.getParameter("width");
+      
+        if((length != null)&& (width != null))
+            area = AreaCalculatorService.getAreaOfRectangle(length, width);
         
         request.setAttribute("area",area);
         

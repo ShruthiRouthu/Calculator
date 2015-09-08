@@ -38,20 +38,19 @@ public class LabOneController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
       
-        double length=0,width=0,area=0; 
+        String length,width;
+        double  area=0; 
+                
+        length = request.getParameter("length");
         
-        String temp = request.getParameter("length");
-        if(temp != null)
-            length = Double.parseDouble(temp);
-        
-        temp = request.getParameter("width");
-        if(temp != null)
-            width = Double.parseDouble(temp);
-        
-        area = AreaCalculatorService.getAreaOfRectangle(length, width);
+        width = request.getParameter("width");
+      
+        if((length != null)&& (width != null))
+            area = AreaCalculatorService.getAreaOfRectangle(length, width);
         
         request.setAttribute("area",area);
-        
+       
+             
         RequestDispatcher view = request.getRequestDispatcher(URL);
         view.forward(request, response);
     }

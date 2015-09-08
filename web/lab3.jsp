@@ -3,10 +3,13 @@
     Created on : Sep 5, 2015, 10:32:19 AM
     Author     : Professional
 --%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -64,7 +67,7 @@
 
                     Object obj = request.getAttribute("rectangleArea");
                     if(obj != null){
-                        rectangleArea = obj+ "";
+                        rectangleArea = obj.toString();
                         out.println("<br>Area of Rectangle : " + rectangleArea);
                     }  */
                 %>        
@@ -103,22 +106,18 @@
                 <% /*
                     obj = request.getAttribute("circleArea");
                     if(obj != null){
-                        String circleArea = obj+ "";
+                        String circleArea = obj.toString();
                         out.println("<br>Area of Circle : " + circleArea);
                     }   */
                 %>        
                 </p> 
-                -->
-                                               
+                -->                             
                 <c:if  test = "${circleArea >= 0}">
                     <p> Area of Circle : <fmt:formatNumber type="number" 
                      maxFractionDigits="2" value="${circleArea} "/> <br> </p>
                 </c:if>
-                
-                
-                
+                    
             </fieldset>    
-        
         </form>
         
         <form id="triangleForm" name="rectangleForm" method="POST" action="LabThreeController"> 
@@ -147,7 +146,7 @@
                  <% /*                    
                     obj = request.getAttribute("triangleArea");
                     if(obj != null){
-                        String triangleArea = obj+ "";
+                        String triangleArea = obj.toString();
                         out.println("<br>Area of Triangle : " + triangleArea);
                     }  */
                 %>        
