@@ -44,6 +44,7 @@ public class LabThreeController extends HttpServlet {
         String temp;
         String formType = request.getParameter("type");
         
+        // if logic to check for type of form
         if(formType != null)
         {
            if(formType.equals(RECTANGLE))  

@@ -3,6 +3,8 @@
     Created on : Sep 5, 2015, 10:32:19 AM
     Author     : Professional
 --%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -54,19 +56,27 @@
                 <input type="hidden" name="type" id="type" value="RECTANGLE" >
                 
                 <input id="button" name="button" type="submit" value="Get Area" >
-                                
+                <br><br>                
+                <!-- 
                 <p>
-                 <% 
+                 <% /*
                     String rectangleArea = " ";
 
                     Object obj = request.getAttribute("rectangleArea");
                     if(obj != null){
                         rectangleArea = obj+ "";
                         out.println("<br>Area of Rectangle : " + rectangleArea);
-                    } 
+                    }  */
                 %>        
-                </p>
-                <br>
+                </p> 
+                -->
+                
+                <c:if  test = "${rectangleArea >= 0}">
+                    <p> Area of Rectangle : <fmt:formatNumber type="number" 
+                     maxFractionDigits="2" value="${rectangleArea} "/> <br> </p>
+                </c:if>
+                
+                
                 
             </fieldset>    
                 
@@ -86,19 +96,26 @@
                 <input type="hidden" name="type" id="type" value="CIRCLE" >
                 
                 <input id="button" name="button" type="submit" value="Get Area">
+                <br><br>
                 
-                
+                <!-- 
                 <p>
-                <% 
+                <% /*
                     obj = request.getAttribute("circleArea");
                     if(obj != null){
                         String circleArea = obj+ "";
                         out.println("<br>Area of Circle : " + circleArea);
-                    }  
+                    }   */
                 %>        
-                </p>
+                </p> 
+                -->
+                                               
+                <c:if  test = "${circleArea >= 0}">
+                    <p> Area of Circle : <fmt:formatNumber type="number" 
+                     maxFractionDigits="2" value="${circleArea} "/> <br> </p>
+                </c:if>
                 
-                <br>
+                
                 
             </fieldset>    
         
@@ -124,17 +141,24 @@
                 <input type="hidden" name="type" id="type" value="TRIANGLE" >
                 
                 <input id="button" name="button" type="submit" value="Get Area">
-                                
+                <br><br>                
+                <!--
                 <p>
-                 <%                    
+                 <% /*                    
                     obj = request.getAttribute("triangleArea");
                     if(obj != null){
                         String triangleArea = obj+ "";
                         out.println("<br>Area of Triangle : " + triangleArea);
-                    } 
+                    }  */
                 %>        
-                </p>
-                <br>
+                </p> 
+                -->
+                              
+                <c:if  test = "${triangleArea >= 0}">
+                    <p> Area of Triangle : <fmt:formatNumber type="number" 
+                     maxFractionDigits="2" value="${triangleArea} "/> <br> </p>
+                </c:if>
+                
                 
             </fieldset>    
                 
