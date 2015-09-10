@@ -15,50 +15,53 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>LAB 3</title>
-        <style>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"> 
+        <!-- <style>
             label {
                 color : #999999;
-                font-family: serif;
-                font-weight: 200;
+                
             }
             
             legend {
                 color: #cc6600; 
-                font-weight: bold;
+               
             }
-            form{
-                margin-bottom: 20px;
-            }
+            
             #button{
-                font-weight: 300;
-                padding: 4px;
-                color: #cc6600;
-                margin-left: 10px;             
+                           
             }
             
             
             
-        </style>
+        </style> -->
     </head>
     <body>
+        <div class="container">
+        <div class="row">
+        <div class="col-md-4">
         
-        <!--  Form for Rectangle -->
-        <form id="rectangleForm" name="rectangleForm" method="POST" action="LabThreeController"> 
+                                        <!--  Form for Rectangle -->
+        <form class="form-inline" id="rectangleForm" name="rectangleForm" method="POST" action="LabThreeController"> 
             <fieldset>
                 <legend> RECTANGLE </legend>
+                <br>
+                
+                <div class="form-group">
+                <label for="length">Length:  </label>
+                <input  class="form-control" id="length" name="length" type="number" value="" placeholder="Enter length" min=0 required>
                 <br><br>
+                </div>
                 
-                <label for="length">Length: </label>
-                <input id="length" name="length" type="number" value="" placeholder="Enter length" min=0 required>
-                <br><br><br>
-                
-                <label for="width">Width: </label>
-                <input id="width" name="width" type="number" value="" placeholder="Enter width" min=0 required>
-                <br><br><br>
+                <div class="form-group">
+                <label for="width">Width:   </label>
+                <input class="form-control" id="width" name="width" type="number" value="" placeholder="Enter width" min=0 required>
+                <br>
+                </div>
                 
                 <input type="hidden" name="type" id="type" value="RECTANGLE" >
                 
-                <input id="button" name="button" type="submit" value="Get Area" >
+                <br><br>
+                <input  id="button" name="button" class="btn btn-primary" type="submit" value="Get Area" >
                 <br><br>                
                 <!-- 
                 <p>
@@ -73,32 +76,30 @@
                 %>        
                 </p> 
                 -->
-                
                 <c:if  test = "${rectangleArea >= 0}">
-                    <p> Area of Rectangle : <fmt:formatNumber type="number" 
-                     maxFractionDigits="2" value="${rectangleArea} "/> <br> </p>
+                    <p  class="help-block"> Area of Rectangle : <fmt:formatNumber type="number" 
+                     maxFractionDigits="2" value="${rectangleArea} "/> <br><br> </p>
                 </c:if>
-                
-                
-                
-            </fieldset>    
-                
+          
+            </fieldset>       
         </form>
-        
-       
-        
-        <form id="circleForm" name="circleForm" method="POST" action="LabThreeController"> 
+               
+        </div>
+       <div class="col-md-4">         
+            <form  class="form-inline" id="circleForm" name="circleForm" method="POST" action="LabThreeController"> 
             <fieldset>
                 <legend> CIRCLE </legend>
-                <br><br>
+                <br>
                 
+                <div class="form-group">
                 <label for="radious">Radious: </label>
-                <input id="radious" name="radious" type="number" value="" placeholder="Enter radious" min=0 required>
-                <br><br><br>
+                <input id="radious" name="radious" type="number" value="" placeholder="Enter radious" min=0 required class="form-control">
+                <br> </div>
+                <br>
                  
                 <input type="hidden" name="type" id="type" value="CIRCLE" >
-                
-                <input id="button" name="button" type="submit" value="Get Area">
+                <br><br>
+                <input id="button" name="button" type="submit" value="Get Area" class="btn btn-primary">
                 <br><br>
                 
                 <!-- 
@@ -113,33 +114,34 @@
                 </p> 
                 -->                             
                 <c:if  test = "${circleArea >= 0}">
-                    <p> Area of Circle : <fmt:formatNumber type="number" 
+                    <p class="help-block"> Area of Circle : <fmt:formatNumber type="number" 
                      maxFractionDigits="2" value="${circleArea} "/> <br> </p>
                 </c:if>
                     
             </fieldset>    
         </form>
-        
-        <form id="triangleForm" name="rectangleForm" method="POST" action="LabThreeController"> 
+       </div>
+        <div class="col-md-4">
+            <form class="form-inline" id="triangleForm" name="rectangleForm" method="POST" action="LabThreeController"> 
             <fieldset>
                 <legend> TRIANGLE </legend>
-                <br><br>
-                
+                <br>
+                <div class="form-group">
                 <label for="side1">Side 1: </label>
-                <input id="side1" name="side1" type="number" value="" placeholder="Enter side1" min=0 required>
-                <br><br><br>
-                
+                <input class="form-control" id="side1" name="side1" type="number" value="" placeholder="Enter side1" min=0 required></div>
+                <br><br>
+                <div class="form-group">
                 <label for="side2">Side 2: </label>
-                <input id="side2" name="side2" type="number" value="" placeholder="Enter side2" min=0 required>
-                <br><br><br>
-                
+                <input class="form-control" id="side2" name="side2" type="number" value="" placeholder="Enter side2" min=0 required></div>
+                <br><br>
+                <div class="form-group">
                 <label for="side3">Side 3: </label>
-                <input id="side3" name="side3" type="number" value="" placeholder="Enter side3" min=0 required>
-                <br><br><br>
+                <input class="form-control" id="side3" name="side3" type="number" value="" placeholder="Enter side3" min=0 required></div>
+                <br>
                 
                 <input type="hidden" name="type" id="type" value="TRIANGLE" >
-                
-                <input id="button" name="button" type="submit" value="Get Area">
+                <br><br>
+                <input id="button" name="button" type="submit" value="Get Area" class="btn btn-primary">
                 <br><br>                
                 <!--
                 <p>
@@ -154,14 +156,14 @@
                 -->
                               
                 <c:if  test = "${triangleArea >= 0}">
-                    <p> Area of Triangle : <fmt:formatNumber type="number" 
+                    <p class="help-block"> Area of Triangle : <fmt:formatNumber type="number" 
                      maxFractionDigits="2" value="${triangleArea} "/> <br> </p>
                 </c:if>
                 
                 
             </fieldset>    
                 
-        </form>        
-        
+        </form>     
+        </div>    
     </body>
 </html>
